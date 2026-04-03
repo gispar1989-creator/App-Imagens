@@ -6,6 +6,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { GoogleGenAI } from "@google/genai";
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Upload, 
@@ -83,7 +84,7 @@ export default function App() {
     setError(null);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+      const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
       
       let targetEnvId = selectedEnv;
       if (mode === 'random') {
